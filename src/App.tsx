@@ -1,18 +1,34 @@
 import { HashRouter as Router, Routes, Route } from 'react-router-dom';
-import { useEffect } from 'react';
+import { useEffect, Suspense, lazy } from 'react';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import CartDrawer from './components/CartDrawer';
-import CheckoutPage from './pages/CheckoutPage';
-import HomePage from './pages/HomePage';
-import ShopPage from './pages/ShopPage';
-import ContactPage from './pages/ContactPage';
+// import { CartProvider } from './context/CartContext';
+// ... other imports
+// Lazy load pages for performance
+const HomePage = lazy(() => import('./pages/HomePage'));
+const ShopPage = lazy(() => import('./pages/ShopPage'));
+const ContactPage = lazy(() => import('./pages/ContactPage'));
+const CheckoutPage = lazy(() => import('./pages/CheckoutPage'));
 import { CartProvider } from './context/CartContext';
 import { ToastProvider } from './context/ToastContext';
 import './App.css';
-
+// Loading Component
+const PageLoader = () => (
+  <div style={{
+    height: '100vh',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'var(--color-primary)',
+    color: 'var(--color-accent)'
+  }}>
+    Loading...
+  </div>
+);
 function App() {
   useEffect(() => {
+    // ... observer logic existing
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -20,24 +36,23 @@ function App() {
         }
       });
     }, { threshold: 0.1 });
-
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
     return () => observer.disconnect();
-  }); // Run on every render to catch new elements (simple approach)
-
+  });
   return (
     <Router>
       <ToastProvider>
         <CartProvider>
           <div className="app">
             <Header />
-            <Routes>
-              <Route path="/" element={<HomePage />} />
-              <Route path="/shop" element={<ShopPage />} />
-              <Route path="/contact" element={<ContactPage />} />
-              <Route path="/checkout" element={<CheckoutPage />} />
-            </Routes>
+            <Suspense fallback={<PageLoader />}>
+              <Routes>
+                <Route path="/" element={<HomePage />} />
+                <Route path="/shop" element={<ShopPage />} />
+                <Route path="/contact" element={<ContactPage />} />
+                <Route path="/checkout" element={<CheckoutPage />} />
+              </Routes>
+            </Suspense>
             <Footer />
             <CartDrawer />
           </div>
@@ -46,5 +61,4 @@ function App() {
     </Router>
   );
 }
-
 export default App;
