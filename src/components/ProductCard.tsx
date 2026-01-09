@@ -2,18 +2,21 @@ import React from 'react';
 import type { Product } from '../data/products';
 import { useCart } from '../context/CartContext';
 import './ProductCard.css';
-
 interface ProductCardProps {
     product: Product;
 }
-
 const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
     const { addItem } = useCart();
-
     return (
         <div className="product-card">
             <div className="product-image-container">
-                <img src={product.image} alt={product.name} className="product-image" />
+                <img
+                    src={product.image}
+                    alt={product.name}
+                    className="product-image"
+                    loading="lazy"
+                    decoding="async"
+                />
                 <button
                     className="add-to-cart-btn"
                     onClick={() => addItem(product)}
@@ -29,5 +32,4 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         </div>
     );
 };
-
 export default ProductCard;
