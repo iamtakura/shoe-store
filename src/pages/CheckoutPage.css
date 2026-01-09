@@ -1,0 +1,132 @@
+.checkout-page {
+    padding-top: 8rem;
+    padding-bottom: 4rem;
+    min-height: 100vh;
+    background-color: var(--color-primary);
+}
+
+.checkout-container {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 4rem;
+}
+
+@media (max-width: 768px) {
+    .checkout-container {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+}
+
+.checkout-empty {
+    padding-top: 10rem;
+    text-align: center;
+    min-height: 100vh;
+}
+
+.checkout-empty h2 {
+    margin-bottom: 2rem;
+}
+
+.continue-shopping {
+    color: var(--color-accent);
+    text-decoration: underline;
+}
+
+.checkout-form-section h2,
+.payment-title {
+    margin-bottom: 2rem;
+    font-size: 1.5rem;
+}
+
+.checkout-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.form-group-row {
+    display: flex;
+    gap: 1.5rem;
+}
+
+input {
+    width: 100%;
+    padding: 1rem;
+    background-color: #252525;
+    border: 1px solid transparent;
+    color: white;
+    border-radius: 4px;
+}
+
+input:focus {
+    outline: none;
+    border-color: var(--color-accent);
+}
+
+.place-order-btn {
+    background-color: var(--color-accent);
+    color: var(--color-primary);
+    padding: 1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-top: 1rem;
+    width: 100%;
+}
+
+.order-summary {
+    background-color: var(--color-card-bg);
+    padding: 2rem;
+    border-radius: 8px;
+    height: fit-content;
+}
+
+.order-summary h3 {
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 1rem;
+}
+
+.summary-items {
+    margin-bottom: 2rem;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.summary-item {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.summary-item img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.summary-name {
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.summary-price {
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+}
+
+.summary-total p {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+}
+
+.total-final {
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: var(--color-accent);
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}

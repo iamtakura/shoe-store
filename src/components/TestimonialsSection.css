@@ -1,0 +1,81 @@
+.testimonials-section {
+    padding: 6rem 0;
+    position: relative;
+    background: linear-gradient(to bottom, var(--color-primary), #1a1a1a);
+}
+
+.testimonial-carousel {
+    max-width: 800px;
+    margin: 4rem auto 0;
+    position: relative;
+    height: 300px;
+    /* Fixed height for absolute cards */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.testimonial-card {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.8s ease, transform 0.8s ease;
+    transform: scale(0.95);
+    pointer-events: none;
+}
+
+.testimonial-card.active {
+    opacity: 1;
+    transform: scale(1);
+    pointer-events: all;
+    z-index: 2;
+}
+
+.testimonial-text {
+    font-size: 2rem;
+    font-weight: 300;
+    font-style: italic;
+    margin-bottom: 2rem;
+    line-height: 1.4;
+}
+
+.testimonial-author {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.testimonial-author strong {
+    font-size: 1.1rem;
+    color: var(--color-accent);
+}
+
+.testimonial-author span {
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+}
+
+.carousel-indicators {
+    position: absolute;
+    bottom: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 1rem;
+}
+
+.indicator {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #333;
+    transition: all 0.3s ease;
+}
+
+.indicator.active {
+    background-color: var(--color-accent);
+    transform: scale(1.2);
+}

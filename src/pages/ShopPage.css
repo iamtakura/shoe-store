@@ -1,0 +1,70 @@
+.shop-page {
+    padding-top: 80px;
+    /* Header space */
+    min-height: 100vh;
+}
+
+.shop-hero {
+    padding: 4rem 0 2rem;
+    text-align: center;
+    background-color: var(--color-primary);
+}
+
+.shop-hero h1 {
+    font-size: 3rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.shop-section {
+    padding: 3rem 0;
+}
+
+.section-header {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    display: inline-block;
+    color: var(--color-accent);
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+}
+
+@media (max-width: 1200px) {
+    .product-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 900px) {
+    .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .product-grid {
+        grid-template-columns: repeat(1, 1fr);
+        /* Mobile view optimization for Android/iOS */
+        gap: 1.5rem;
+    }
+
+    .shop-hero h1 {
+        font-size: 2rem;
+    }
+
+    .section-header {
+        font-size: 1.5rem;
+    }
+
+    .product-card {
+        /* Ensure card touches are easy on mobile */
+        min-height: auto;
+    }
+}
