@@ -4,6 +4,13 @@
     min-height: 100vh;
 }
 
+@media (max-width: 768px) {
+    .shop-page {
+        padding-top: 130px;
+        /* Increased for stacked header */
+    }
+}
+
 .shop-hero {
     padding: 4rem 0 2rem;
     text-align: center;
