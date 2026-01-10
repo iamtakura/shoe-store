@@ -18,9 +18,11 @@ const Header = () => {
     return (
         <header className={`header ${scrolled ? 'scrolled' : ''}`}>
             <div className="container header-container">
-                <div className="logo">
-                    <h1>SNEAKER<span className="accent">HEAD</span></h1>
-                </div>
+                <Link to="/" className="logo-link" style={{ textDecoration: 'none', color: 'inherit' }}>
+                    <div className="logo">
+                        <h1>SNEAKER<span className="accent">HEAD</span></h1>
+                    </div>
+                </Link>
                 <nav className="nav">
                     <ul>
                         <li><Link to="/">Home</Link></li>
