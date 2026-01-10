@@ -3,16 +3,20 @@ import { useEffect, Suspense, lazy } from 'react';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import CartDrawer from './components/CartDrawer';
+import ScrollToTop from './components/ScrollToTop';
 // import { CartProvider } from './context/CartContext';
 // ... other imports
+
 // Lazy load pages for performance
 const HomePage = lazy(() => import('./pages/HomePage'));
 const ShopPage = lazy(() => import('./pages/ShopPage'));
 const ContactPage = lazy(() => import('./pages/ContactPage'));
 const CheckoutPage = lazy(() => import('./pages/CheckoutPage'));
+
 import { CartProvider } from './context/CartContext';
 import { ToastProvider } from './context/ToastContext';
 import './App.css';
+
 // Loading Component
 const PageLoader = () => (
   <div style={{
@@ -26,6 +30,7 @@ const PageLoader = () => (
     Loading...
   </div>
 );
+
 function App() {
   useEffect(() => {
     // ... observer logic existing
@@ -36,11 +41,15 @@ function App() {
         }
       });
     }, { threshold: 0.1 });
+
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
     return () => observer.disconnect();
   });
+
   return (
     <Router>
+      <ScrollToTop />
       <ToastProvider>
         <CartProvider>
           <div className="app">
@@ -61,4 +70,5 @@ function App() {
     </Router>
   );
 }
+
 export default App;
